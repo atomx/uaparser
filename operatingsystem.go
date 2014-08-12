@@ -7,11 +7,22 @@ import (
 )
 
 
+const (
+  WINDOWS Id = iota + 2 // 2
+  IOS                   // 3
+  MAC_OS_X              // 4
+  LINUX                 // 5
+  ANDROID               // 6
+  WINDOWS_PHONE         // 7
+  CHROME_OS             // 8
+)
+
+
 var operatingSystems = []pattern{
 
   // Windows 
   pattern{
-    2,
+    WINDOWS,
     []string{"windows"},
     []string{"windows phone"},
     regexp.MustCompile(`windows nt[ ]?(\d+\.\d+)`),
@@ -19,7 +30,7 @@ var operatingSystems = []pattern{
 
   // iOS
   pattern{
-    3,
+    IOS,
     []string{"like mac os x"},
     []string{},
     regexp.MustCompile(`os (\d+)(?:_(\d+))?`),
@@ -27,7 +38,7 @@ var operatingSystems = []pattern{
 
   // Mac OS X
   pattern{
-    4,
+    MAC_OS_X,
     []string{"mac os x"},
     []string{"iphone", "ipad", "ipod"},
     regexp.MustCompile(`mac os x (\d+)[_\.](\d+)`), // Safari uses '_', Firefox uses '.'.
@@ -35,7 +46,7 @@ var operatingSystems = []pattern{
 
   // Linux
   pattern{
-    5,
+    LINUX,
     []string{"linux"},
     []string{"android"},
     nil,
@@ -43,7 +54,7 @@ var operatingSystems = []pattern{
 
   // Android
   pattern{
-    6,
+    ANDROID,
     []string{"android"},
     []string{},
     regexp.MustCompile(`android (\d+\.\d+)`),
@@ -51,10 +62,18 @@ var operatingSystems = []pattern{
 
   // Windows Phone
   pattern{
-    7,
+    WINDOWS_PHONE,
     []string{"windows phone"},
     []string{},
-    regexp.MustCompile(`phone (\d+\.\d+)`),
+    regexp.MustCompile(`phone (?:os )?(\d+\.\d+)`),
+  },
+
+  // Chrome OS
+  pattern{
+    CHROME_OS,
+    []string{"cros"},
+    []string{},
+    nil,
   },
 
 }

@@ -7,11 +7,21 @@ import (
 )
 
 
+const (
+  IE Id = iota + 2 // 2
+  CHROME           // 3
+  SAFARI           // 4
+  FIREFOX          // 5
+  OPERA            // 6
+  CHROMIUM         // 7
+)
+
+
 var browsers = []pattern{
 
   // IE < 11
   pattern{
-    2,
+    IE,
     []string{"msie"},
     []string{},
     regexp.MustCompile(`msie (\d+\.\d+)`),
@@ -19,7 +29,7 @@ var browsers = []pattern{
 
   // IE >= 11
   pattern{
-    2,
+    IE,
     []string{"trident"},
     []string{},
     regexp.MustCompile(`rv:(\d+\.\d+)`),
@@ -27,14 +37,14 @@ var browsers = []pattern{
 
   // Chrome
   pattern{
-    3,
+    CHROME,
     []string{"chrome"},
     []string{"chromium"},
     regexp.MustCompile(`chrome/(\d+\.\d+)`),
   },
   // Chrome on iOS
   pattern{
-    3,
+    CHROME,
     []string{"crios"},
     []string{},
     regexp.MustCompile(`crios/(\d+\.\d+)`),
@@ -42,7 +52,7 @@ var browsers = []pattern{
 
   // Safari
   pattern{
-    4,
+    SAFARI,
     []string{"safari"},
     []string{"chrome", "chromium", "crios"},
     regexp.MustCompile(`version/(\d+\.\d+)`),
@@ -50,7 +60,7 @@ var browsers = []pattern{
 
   // Firefox
   pattern{
-    5,
+    FIREFOX,
     []string{"firefox"},
     []string{"seamonkey"},
     regexp.MustCompile(`firefox/(\d+\.\d+)`),
@@ -58,10 +68,18 @@ var browsers = []pattern{
 
   // Opera
   pattern{
-    6,
+    OPERA,
     []string{"opera"},
     []string{},
     regexp.MustCompile(`opera/(\d+\.\d+)`),
+  },
+
+  // Chromium
+  pattern{
+    CHROMIUM,
+    []string{"chromium"},
+    []string{},
+    regexp.MustCompile(`chromium/(\d+\.\d+)`),
   },
 
 }

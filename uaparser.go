@@ -19,6 +19,11 @@ type pattern struct {
 }
 
 
+const (
+  UNKNOWN Id = 1
+)
+
+
 func find(patterns []pattern, userAgent string) (id Id, version float32) {
   userAgent = strings.ToLower(userAgent)
 

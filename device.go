@@ -7,11 +7,21 @@ import (
 )
 
 
+const (
+  IPHONE Id = iota + 2 // 2
+  IPAD                 // 3
+  IPOD                 // 4
+  GALAXY_NEXUS         // 5
+  NOKIA_LUMIA          // 6
+  NEXUS                // 7
+)
+
+
 var devices = []pattern{
 
   // iPhone
   pattern{
-    2,
+    IPHONE,
     []string{"iphone"},
     []string{},
     nil,
@@ -19,7 +29,7 @@ var devices = []pattern{
 
   // iPad
   pattern{
-    3,
+    IPAD,
     []string{"ipad"},
     []string{},
     nil,
@@ -27,7 +37,7 @@ var devices = []pattern{
 
   // iPod
   pattern{
-    4,
+    IPOD,
     []string{"ipod"},
     []string{},
     nil,
@@ -35,7 +45,7 @@ var devices = []pattern{
 
   // Galaxy Nexus
   pattern{
-    5,
+    GALAXY_NEXUS,
     []string{"galaxy nexus"},
     []string{},
     nil,
@@ -43,10 +53,18 @@ var devices = []pattern{
 
   // Nokia Lumia
   pattern{
-    6,
+    NOKIA_LUMIA,
     []string{"nokia", "lumia"},
     []string{},
     regexp.MustCompile(`lumia (\d+)`),
+  },
+
+  // Nexus
+  pattern{
+    NEXUS,
+    []string{"nexus"},
+    []string{},
+    regexp.MustCompile(`nexus (\d+)`),
   },
 
 }

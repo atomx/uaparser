@@ -2,52 +2,92 @@
 package uaparser
 
 
+const (
+  PC Id = iota + 2 // 2
+  PHONE            // 3
+  TABLET           // 4
+  CONSOLE          // 5
+)
+
+
 var deviceTypes = []pattern{
 
   // PC
   pattern{
-    2,
+    PC,
     []string{"windows"},
     []string{"windows phone"},
     nil,
   },
   pattern{
-    2,
+    PC,
     []string{"mac os x"},
     []string{"iphone", "ipad", "ipod"},
     nil,
   },
   pattern{
-    2,
+    PC,
     []string{"linux"},
     []string{"android"},
+    nil,
+  },
+  pattern{
+    PC,
+    []string{"cros"},
+    []string{},
     nil,
   },
 
   // Phone
   pattern{
-    3,
+    PHONE,
     []string{"iphone"},
     []string{},
     nil,
   },
   pattern{
-    3,
+    PHONE,
     []string{"windows phone"},
     []string{},
     nil,
   },
   pattern{
-    3,
+    PHONE,
     []string{"android", "mobile"},
+    []string{},
+    nil,
+  },
+  pattern{
+    PHONE,
+    []string{"bb"},
     []string{},
     nil,
   },
 
   // Tablet
   pattern{
-    4,
+    TABLET,
     []string{"ipad"},
+    []string{},
+    nil,
+  },
+  pattern{
+    TABLET,
+    []string{"android"},
+    []string{"mobile", "cros"},
+    nil,
+  },
+  pattern{
+    TABLET,
+    []string{"rim Tablet"},
+    []string{},
+    nil,
+  },
+
+  // Console
+  pattern{
+    CONSOLE,
+    []string{"playstation"},
     []string{},
     nil,
   },
