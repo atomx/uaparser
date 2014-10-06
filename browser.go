@@ -4,8 +4,9 @@ import (
 	"regexp"
 )
 
+// Browser ID's.
 const (
-	IE       Id = iota + 2 // 2
+	IE       ID = iota + 2 // 2
 	CHROME                 // 3
 	SAFARI                 // 4
 	FIREFOX                // 5
@@ -20,7 +21,7 @@ var browsers = []pattern{
 		IE,
 		[]string{"msie"},
 		[]string{"chromeframe"},
-		regexp.MustCompile(`msie (\d+\.\d+)`),
+		regexp.MustCompile(`msie (\d+)\.(\d+)`),
 	},
 
 	// IE >= 11
@@ -28,7 +29,7 @@ var browsers = []pattern{
 		IE,
 		[]string{"trident"},
 		[]string{"chromeframe"},
-		regexp.MustCompile(`rv:(\d+\.\d+)`),
+		regexp.MustCompile(`rv:(\d+)\.(\d+)`),
 	},
 
 	// Chrome
@@ -36,14 +37,14 @@ var browsers = []pattern{
 		CHROME,
 		[]string{"chrome"},
 		[]string{"chromium", "chromeframe"},
-		regexp.MustCompile(`chrome/(\d+\.\d+)`),
+		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
 	},
 	// Chrome on iOS
 	pattern{
 		CHROME,
 		[]string{"crios"},
 		[]string{},
-		regexp.MustCompile(`crios/(\d+\.\d+)`),
+		regexp.MustCompile(`crios/(\d+)\.(\d+)`),
 	},
 
 	// Safari
@@ -51,7 +52,7 @@ var browsers = []pattern{
 		SAFARI,
 		[]string{"safari"},
 		[]string{"chrome", "chromium", "crios"},
-		regexp.MustCompile(`version/(\d+\.\d+)`),
+		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 
 	// Firefox
@@ -59,7 +60,7 @@ var browsers = []pattern{
 		FIREFOX,
 		[]string{"firefox"},
 		[]string{"seamonkey"},
-		regexp.MustCompile(`firefox/(\d+\.\d+)`),
+		regexp.MustCompile(`firefox/(\d+)\.(\d+)`),
 	},
 
 	// Opera
@@ -67,7 +68,7 @@ var browsers = []pattern{
 		OPERA,
 		[]string{"opera"},
 		[]string{},
-		regexp.MustCompile(`opera/(\d+\.\d+)`),
+		regexp.MustCompile(`opera/(\d+)\.(\d+)`),
 	},
 
 	// Chromium
@@ -75,12 +76,12 @@ var browsers = []pattern{
 		CHROMIUM,
 		[]string{"chromium"},
 		[]string{},
-		regexp.MustCompile(`chromium/(\d+\.\d+)`),
+		regexp.MustCompile(`chromium/(\d+)\.(\d+)`),
 	},
 }
 
-// Will return the browser id and version number.
+// Browser will return the browser id and version number.
 // Returns 1,0 when nothing matched.
-func Browser(userAgent string) (Id, float32) {
+func Browser(userAgent string) (ID, int) {
 	return find(browsers, userAgent)
 }

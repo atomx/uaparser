@@ -6,20 +6,27 @@ import (
 	"strings"
 )
 
-type Id uint
+// ID type.
+type ID uint
 
 type pattern struct {
-	id             Id
+	id             ID
 	mustContain    []string
 	mustNotContain []string
 	version        *regexp.Regexp
 }
 
 const (
-	UNKNOWN Id = 1
+	// UNKNOWN is the unknown ID.
+	UNKNOWN ID = 1
 )
 
-func find(patterns []pattern, userAgent string) (id Id, version float32) {
+// Version converts a major,minor version pair into a single number using (major * 10000) + minor.
+func Version(major, minor int) int {
+	return (major * 10000) + minor
+}
+
+func find(patterns []pattern, userAgent string) (id ID, version int) {
 	userAgent = strings.ToLower(userAgent)
 
 patterns:
@@ -43,16 +50,21 @@ patterns:
 		}
 
 		vs := pattern.version.FindStringSubmatch(userAgent)
+		major := 0
+		minor := 0
 
-		if len(vs) > 2 {
-			if v, err := strconv.ParseFloat(vs[1]+"."+vs[2], 32); err == nil {
-				version = float32(v)
-			}
-		} else if len(vs) == 2 {
-			if v, err := strconv.ParseFloat(vs[1], 32); err == nil {
-				version = float32(v)
+		if len(vs) > 1 {
+			if v, err := strconv.ParseInt(vs[1], 10, 32); err == nil {
+				major = int(v)
 			}
 		}
+		if len(vs) > 2 {
+			if v, err := strconv.ParseInt(vs[2], 10, 32); err == nil {
+				minor = int(v)
+			}
+		}
+
+		version = Version(major, minor)
 
 		return
 	}

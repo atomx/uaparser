@@ -1,23 +1,24 @@
 package uaparser
 
+// Device Type ID's.
 const (
-	PC          Id = iota + 2 // 2
-	PHONE                     // 3
-	TABLET                    // 4
-	CONSOLE                   // 5
-	SET_TOP_BOX               // 6
+	PC        ID = iota + 2 // 2
+	PHONE                   // 3
+	TABLET                  // 4
+	CONSOLE                 // 5
+	SETTOPBOX               // 6
 )
 
 var deviceTypes = []pattern{
 	// Set-top box
 	pattern{
-		SET_TOP_BOX,
+		SETTOPBOX,
 		[]string{"media center pc"},
 		[]string{},
 		nil,
 	},
 	pattern{
-		SET_TOP_BOX,
+		SETTOPBOX,
 		[]string{"googletv"},
 		[]string{},
 		nil,
@@ -122,9 +123,9 @@ var deviceTypes = []pattern{
 	},
 }
 
-// Will return the device type.
+// DeviceType will return the device type.
 // Returns 1 when nothing matched.
-func DeviceType(userAgent string) Id {
+func DeviceType(userAgent string) ID {
 	id, _ := find(deviceTypes, userAgent)
 	return id
 }
