@@ -24,7 +24,7 @@ var browsers = []pattern{
 		regexp.MustCompile(`msie (\d+)\.(\d+)`),
 	},
 
-	// IE >= 11
+	// IE 11
 	pattern{
 		IE,
 		[]string{"trident"},
@@ -32,11 +32,21 @@ var browsers = []pattern{
 		regexp.MustCompile(`rv:(\d+)\.(\d+)`),
 	},
 
+	// IE 12
+	// Looks like:
+	// Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0
+	pattern{
+		IE,
+		[]string{"applewebkit", "chrome", "safari", "edge"},
+		[]string{},
+		regexp.MustCompile(`edge/(\d+)\.(\d+)`),
+	},
+
 	// Chrome
 	pattern{
 		CHROME,
 		[]string{"chrome"},
-		[]string{"chromium", "chromeframe"},
+		[]string{"chromium", "chromeframe", "edge"}, // Edge is from IE12 preview.
 		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
 	},
 	// Chrome on iOS
