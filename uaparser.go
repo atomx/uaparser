@@ -32,6 +32,8 @@ func find(patterns []pattern, userAgent string) (id ID, version int) {
 patterns:
 	for _, pattern := range patterns {
 		for _, token := range pattern.mustContain {
+			// TODO: We can speed this up by copying http://golang.org/src/strings/strings.go#L159
+			// and precalculating the hashsep.
 			if !strings.Contains(userAgent, token) {
 				continue patterns
 			}
