@@ -46,7 +46,7 @@ var browsers = []pattern{
 	pattern{
 		CHROME,
 		[]string{"chrome"},
-		[]string{"chromium", "chromeframe", "edge"}, // Edge is from IE12 preview.
+		[]string{"chromium", "chromeframe", "edge", "vivaldi"}, // Edge is from IE12 preview.
 		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
 	},
 	// Chrome on iOS
