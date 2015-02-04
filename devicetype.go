@@ -9,6 +9,15 @@ const (
 	SETTOPBOX               // 6
 )
 
+var DeviceTypes = map[ID]string{
+	UNKNOWN:   "Unknown",
+	PC:        "PC",
+	PHONE:     "Phone",
+	TABLET:    "Tablet",
+	CONSOLE:   "Console",
+	SETTOPBOX: "Set top box",
+}
+
 var deviceTypes = []pattern{
 	// Set-top box
 	pattern{

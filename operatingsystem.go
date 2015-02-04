@@ -15,6 +15,16 @@ const (
 	CHROMEOS                   // 8
 )
 
+var OperatingSystems = map[ID]string{
+	WINDOWS:      "Windows",
+	IOS:          "iOS",
+	MACOSX:       "Max OS X",
+	LINUX:        "Linux",
+	ANDROID:      "Android",
+	WINDOWSPHONE: "Windows Phone",
+	CHROMEOS:     "Chrome OS",
+}
+
 var operatingSystems = []pattern{
 
 	// Windows

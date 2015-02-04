@@ -26,6 +26,11 @@ func Version(major, minor int) int {
 	return (major * 10000) + minor
 }
 
+func Unversion(version int) (int, int) {
+	minor := version % 10000
+	return (version - minor) / 10000, minor
+}
+
 func find(patterns []pattern, userAgent string) (id ID, version int) {
 	userAgent = strings.ToLower(userAgent)
 

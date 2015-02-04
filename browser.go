@@ -14,6 +14,16 @@ const (
 	CHROMIUM               // 7
 )
 
+var Browsers = map[ID]string{
+	UNKNOWN:  "Unknown",
+	IE:       "IE",
+	CHROME:   "Chrome",
+	SAFARI:   "Safari",
+	FIREFOX:  "Firefox",
+	OPERA:    "Opera",
+	CHROMIUM: "Chromium",
+}
+
 var browsers = []pattern{
 
 	// IE < 11
