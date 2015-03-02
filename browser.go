@@ -6,22 +6,24 @@ import (
 
 // Browser ID's.
 const (
-	IE       ID = iota + 2 // 2
-	CHROME                 // 3
-	SAFARI                 // 4
-	FIREFOX                // 5
-	OPERA                  // 6
-	CHROMIUM               // 7
+	IE        ID = iota + 2 // 2
+	CHROME                  // 3
+	SAFARI                  // 4
+	FIREFOX                 // 5
+	OPERA                   // 6
+	CHROMIUM                // 7
+	UCBROWSER               // 8
 )
 
 var Browsers = map[ID]string{
-	UNKNOWN:  "Unknown",
-	IE:       "IE",
-	CHROME:   "Chrome",
-	SAFARI:   "Safari",
-	FIREFOX:  "Firefox",
-	OPERA:    "Opera",
-	CHROMIUM: "Chromium",
+	UNKNOWN:   "Unknown",
+	IE:        "IE",
+	CHROME:    "Chrome",
+	SAFARI:    "Safari",
+	FIREFOX:   "Firefox",
+	OPERA:     "Opera",
+	CHROMIUM:  "Chromium",
+	UCBROWSER: "UC Browser",
 }
 
 var browsers = []pattern{
@@ -71,7 +73,7 @@ var browsers = []pattern{
 	pattern{
 		SAFARI,
 		[]string{"safari"},
-		[]string{"chrome", "chromium", "crios"},
+		[]string{"chrome", "chromium", "crios", "ucbrowser", "qqbrowser"},
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 
@@ -97,6 +99,17 @@ var browsers = []pattern{
 		[]string{"chromium"},
 		[]string{},
 		regexp.MustCompile(`chromium/(\d+)\.(\d+)`),
+	},
+
+	// UC Browser
+	// See: https://play.google.com/store/apps/details?id=com.UCMobile.intl&hl=en
+	// According to http://gs.statcounter.com/#mobile_browser-ww-monthly-201402-201502-bar it's the 5th biggest browser
+	// with about the same number of users as Opera.
+	pattern{
+		UCBROWSER,
+		[]string{"ucbrowser"},
+		[]string{},
+		regexp.MustCompile(`ucbrowser/(\d+)\.(\d+)`),
 	},
 }
 

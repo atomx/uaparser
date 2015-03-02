@@ -180,6 +180,18 @@ var (
 			MACOSX, Version(10, 10),
 			UNKNOWN, Version(0, 0),
 		},
+		test{
+			"Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SM-T210R Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 UCBrowser/2.3.2.300",
+			TABLET,
+			ANDROID, Version(4, 1),
+			UCBROWSER, Version(2, 3),
+		},
+		test{ // QQ Browser
+			"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC M8t Build/KTU84P) AppleWebKit/537.36 (KHTML like Gecko)Version/4.0 MQQBrowser/5.6 Mobile Safari/537.36",
+			PHONE,
+			ANDROID, Version(4, 4),
+			UNKNOWN, Version(0, 0),
+		},
 	}
 )
 
@@ -192,18 +204,18 @@ func TestUserAgents(t *testing.T) {
 		t.Log(test.userAgent)
 
 		if deviceTypeID != test.deviceTypeID {
-			t.Errorf(" - device type id %d does not match expected %d", deviceTypeID, test.deviceTypeID)
+			t.Errorf(" - device type %s does not match expected %s", DeviceTypes[deviceTypeID], DeviceTypes[test.deviceTypeID])
 		}
 
 		if operatingSystemID != test.operatingSystemID {
-			t.Errorf(" - operating system id %d does not match expected %d", operatingSystemID, test.operatingSystemID)
+			t.Errorf(" - operating system id %s does not match expected %s", OperatingSystems[operatingSystemID], OperatingSystems[test.operatingSystemID])
 		}
 		if operatingSystemVersion != test.operatingSystemVersion {
 			t.Errorf(" - operating system version %d does not match expected %d", operatingSystemVersion, test.operatingSystemVersion)
 		}
 
 		if browserID != test.browserID {
-			t.Errorf(" - browser id %d does not match expected %d", browserID, test.browserID)
+			t.Errorf(" - browser id %s does not match expected %s", Browsers[browserID], Browsers[test.browserID])
 		}
 		if browserVersion != test.browserVersion {
 			t.Errorf(" - browser version %d does not match expected %d", browserVersion, test.browserVersion)
