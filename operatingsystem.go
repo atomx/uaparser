@@ -4,18 +4,18 @@ import (
 	"regexp"
 )
 
-// Operating System ID's.
+// Operating System int's.
 const (
-	WINDOWS      ID = iota + 2 // 2
-	IOS                        // 3
-	MACOSX                     // 4
-	LINUX                      // 5
-	ANDROID                    // 6
-	WINDOWSPHONE               // 7
-	CHROMEOS                   // 8
+	WINDOWS      = iota + 2 // 2
+	IOS                     // 3
+	MACOSX                  // 4
+	LINUX                   // 5
+	ANDROID                 // 6
+	WINDOWSPHONE            // 7
+	CHROMEOS                // 8
 )
 
-var OperatingSystems = map[ID]string{
+var OperatingSystems = map[int]string{
 	WINDOWS:      "Windows",
 	IOS:          "iOS",
 	MACOSX:       "Max OS X",
@@ -86,6 +86,6 @@ var operatingSystems = []pattern{
 
 // OperatingSystem will return the operating system id and version number.
 // Returns 1,0 when nothing matched.
-func OperatingSystem(userAgent string) (ID, int) {
+func OperatingSystem(userAgent string) (int, int) {
 	return find(operatingSystems, userAgent)
 }

@@ -7,12 +7,12 @@ import (
 type test struct {
 	userAgent string
 
-	deviceTypeID ID
+	deviceTypeId int
 
-	operatingSystemID      ID
+	operatingSystemId      int
 	operatingSystemVersion int
 
-	browserID      ID
+	browserId      int
 	browserVersion int
 }
 
@@ -197,25 +197,25 @@ var (
 
 func TestUserAgents(t *testing.T) {
 	for _, test := range tests {
-		deviceTypeID := DeviceType(test.userAgent)
-		operatingSystemID, operatingSystemVersion := OperatingSystem(test.userAgent)
-		browserID, browserVersion := Browser(test.userAgent)
+		deviceTypeId := DeviceType(test.userAgent)
+		operatingSystemId, operatingSystemVersion := OperatingSystem(test.userAgent)
+		browserId, browserVersion := Browser(test.userAgent)
 
 		t.Log(test.userAgent)
 
-		if deviceTypeID != test.deviceTypeID {
-			t.Errorf(" - device type %s does not match expected %s", DeviceTypes[deviceTypeID], DeviceTypes[test.deviceTypeID])
+		if deviceTypeId != test.deviceTypeId {
+			t.Errorf(" - device type %s does not match expected %s", DeviceTypes[deviceTypeId], DeviceTypes[test.deviceTypeId])
 		}
 
-		if operatingSystemID != test.operatingSystemID {
-			t.Errorf(" - operating system id %s does not match expected %s", OperatingSystems[operatingSystemID], OperatingSystems[test.operatingSystemID])
+		if operatingSystemId != test.operatingSystemId {
+			t.Errorf(" - operating system id %s does not match expected %s", OperatingSystems[operatingSystemId], OperatingSystems[test.operatingSystemId])
 		}
 		if operatingSystemVersion != test.operatingSystemVersion {
 			t.Errorf(" - operating system version %d does not match expected %d", operatingSystemVersion, test.operatingSystemVersion)
 		}
 
-		if browserID != test.browserID {
-			t.Errorf(" - browser id %s does not match expected %s", Browsers[browserID], Browsers[test.browserID])
+		if browserId != test.browserId {
+			t.Errorf(" - browser id %s does not match expected %s", Browsers[browserId], Browsers[test.browserId])
 		}
 		if browserVersion != test.browserVersion {
 			t.Errorf(" - browser version %d does not match expected %d", browserVersion, test.browserVersion)

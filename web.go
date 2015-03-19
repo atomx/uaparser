@@ -77,12 +77,12 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 	d.DeviceType = DeviceTypes[DeviceType(d.UserAgent)]
 
-	operatingSystemID, operatingSystemVersion := OperatingSystem(d.UserAgent)
-	d.OperatingSystem = OperatingSystems[operatingSystemID]
+	operatingSystemId, operatingSystemVersion := OperatingSystem(d.UserAgent)
+	d.OperatingSystem = OperatingSystems[operatingSystemId]
 	d.OperatingSystemVersion = versionStr(operatingSystemVersion)
 
-	browserID, browserVersion := Browser(d.UserAgent)
-	d.Browser = Browsers[browserID]
+	browserId, browserVersion := Browser(d.UserAgent)
+	d.Browser = Browsers[browserId]
 	d.BrowserVersion = versionStr(browserVersion)
 
 	w.Header().Set("Content-Type", "text/html")

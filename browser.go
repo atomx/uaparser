@@ -4,18 +4,18 @@ import (
 	"regexp"
 )
 
-// Browser ID's.
+// Browser int's.
 const (
-	IE        ID = iota + 2 // 2
-	CHROME                  // 3
-	SAFARI                  // 4
-	FIREFOX                 // 5
-	OPERA                   // 6
-	CHROMIUM                // 7
-	UCBROWSER               // 8
+	IE        = iota + 2 // 2
+	CHROME               // 3
+	SAFARI               // 4
+	FIREFOX              // 5
+	OPERA                // 6
+	CHROMIUM             // 7
+	UCBROWSER            // 8
 )
 
-var Browsers = map[ID]string{
+var Browsers = map[int]string{
 	UNKNOWN:   "Unknown",
 	IE:        "IE",
 	CHROME:    "Chrome",
@@ -115,6 +115,6 @@ var browsers = []pattern{
 
 // Browser will return the browser id and version number.
 // Returns 1,0 when nothing matched.
-func Browser(userAgent string) (ID, int) {
+func Browser(userAgent string) (int, int) {
 	return find(browsers, userAgent)
 }

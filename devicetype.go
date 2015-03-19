@@ -1,15 +1,15 @@
 package uaparser
 
-// Device Type ID's.
+// Device Type id's.
 const (
-	PC        ID = iota + 2 // 2
-	PHONE                   // 3
-	TABLET                  // 4
-	CONSOLE                 // 5
-	SETTOPBOX               // 6
+	PC        = iota + 2 // 2
+	PHONE                // 3
+	TABLET               // 4
+	CONSOLE              // 5
+	SETTOPBOX            // 6
 )
 
-var DeviceTypes = map[ID]string{
+var DeviceTypes = map[int]string{
 	UNKNOWN:   "Unknown",
 	PC:        "PC",
 	PHONE:     "Phone",
@@ -134,7 +134,7 @@ var deviceTypes = []pattern{
 
 // DeviceType will return the device type.
 // Returns 1 when nothing matched.
-func DeviceType(userAgent string) ID {
+func DeviceType(userAgent string) int {
 	id, _ := find(deviceTypes, userAgent)
 	return id
 }

@@ -6,19 +6,16 @@ import (
 	"strings"
 )
 
-// ID type.
-type ID uint
-
 type pattern struct {
-	id             ID
+	id             int
 	mustContain    []string
 	mustNotContain []string
 	version        *regexp.Regexp
 }
 
 const (
-	// UNKNOWN is the unknown ID.
-	UNKNOWN ID = 1
+	// UNKNOWN is the unknown id.
+	UNKNOWN = 1
 )
 
 // Version converts a major,minor version pair into a single number using (major * 10000) + minor.
@@ -31,7 +28,7 @@ func Unversion(version int) (int, int) {
 	return (version - minor) / 10000, minor
 }
 
-func find(patterns []pattern, userAgent string) (id ID, version int) {
+func find(patterns []pattern, userAgent string) (id int, version int) {
 	userAgent = strings.ToLower(userAgent)
 
 patterns:
