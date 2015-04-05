@@ -4,7 +4,7 @@ import (
 	"regexp"
 )
 
-// Browser int's.
+// Browser id's.
 const (
 	IE        = iota + 2 // 2
 	CHROME               // 3

@@ -4,7 +4,7 @@ import (
 	"regexp"
 )
 
-// Operating System int's.
+// Operating System id's.
 const (
 	WINDOWS      = iota + 2 // 2
 	IOS                     // 3
