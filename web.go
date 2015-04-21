@@ -75,6 +75,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 		d.UserAgent = r.FormValue("useragent")
 	}
 
+	log.Printf("%22s %s\n", r.RemoteAddr, d.UserAgent)
+
 	d.DeviceType = DeviceTypes[DeviceType(d.UserAgent)]
 
 	operatingSystemId, operatingSystemVersion := OperatingSystem(d.UserAgent)

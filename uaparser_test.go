@@ -192,6 +192,12 @@ var (
 			ANDROID, Version(4, 4),
 			UNKNOWN, Version(0, 0),
 		},
+		test{ // Opera on iOS using Opera Turbo.
+			"Mozilla/5.0 (iPhone; CPU iPhone OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) OPiOS/10.0.1.90729 Mobile/12F70 Safari/9537.53",
+			PHONE,
+			IOS, Version(8, 3),
+			OPERA, Version(10, 0),
+		},
 	}
 )
 

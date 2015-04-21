@@ -73,7 +73,14 @@ var browsers = []pattern{
 	pattern{
 		SAFARI,
 		[]string{"safari"},
-		[]string{"chrome", "chromium", "crios", "ucbrowser", "qqbrowser"},
+		[]string{
+			"chrome",
+			"chromium",
+			"crios",
+			"opios", // Opera on iOS using Opera Turbo.
+			"ucbrowser",
+			"qqbrowser",
+		},
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 
@@ -86,11 +93,23 @@ var browsers = []pattern{
 	},
 
 	// Opera
+	pattern{ // Mini
+		OPERA,
+		[]string{"opera mini"},
+		[]string{},
+		regexp.MustCompile(`opera mini/(\d+)\.(\d+)`),
+	},
 	pattern{
 		OPERA,
 		[]string{"opera"},
 		[]string{},
 		regexp.MustCompile(`opera/(\d+)\.(\d+)`),
+	},
+	pattern{ // Turbo on iOS
+		OPERA,
+		[]string{"opios"},
+		[]string{},
+		regexp.MustCompile(`opios/(\d+)\.(\d+)`),
 	},
 
 	// Chromium
