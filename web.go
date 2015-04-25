@@ -23,7 +23,7 @@ type data struct {
 	BrowserVersion         string
 }
 
-var content = template.Must(template.New("content").Parse(`<doctype html>
+var content = template.Must(template.New("content").Parse(`<!doctype html>
 <html>
 <head>
 <meta charset=utf-8>
