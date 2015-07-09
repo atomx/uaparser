@@ -15,7 +15,7 @@ const (
 	UCBROWSER            // 8
 )
 
-var Browsers = map[int]string{
+var Browsers = map[uint]string{
 	UNKNOWN:   "Unknown",
 	IE:        "IE",
 	CHROME:    "Chrome",
@@ -134,6 +134,6 @@ var browsers = []pattern{
 
 // Browser will return the browser id and version number.
 // Returns 1,0 when nothing matched.
-func Browser(userAgent string) (int, int) {
+func Browser(userAgent string) (uint, int) {
 	return find(browsers, userAgent)
 }

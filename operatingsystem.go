@@ -15,7 +15,7 @@ const (
 	CHROMEOS                // 8
 )
 
-var OperatingSystems = map[int]string{
+var OperatingSystems = map[uint]string{
 	WINDOWS:      "Windows",
 	IOS:          "iOS",
 	MACOSX:       "Max OS X",
@@ -86,6 +86,6 @@ var operatingSystems = []pattern{
 
 // OperatingSystem will return the operating system id and version number.
 // Returns 1,0 when nothing matched.
-func OperatingSystem(userAgent string) (int, int) {
+func OperatingSystem(userAgent string) (uint, int) {
 	return find(operatingSystems, userAgent)
 }
