@@ -106,7 +106,7 @@ var (
 			"Opera/9.80 (Windows NT 6.2; Win64; x64) Presto/2.12 Version/12.16",
 			PC,
 			WINDOWS, Version(6, 2),
-			OPERA, Version(9, 80),
+			OPERA, Version(12, 16),
 		},
 		test{
 			"Mozilla/5.0 (iPad; CPU OS 613 like Mac OS X) AppleWebKit/536.26 (KHTML like Gecko) Version/6.0 Mobile/10B329 Safari/8536.25",
@@ -197,6 +197,36 @@ var (
 			PHONE,
 			IOS, Version(8, 3),
 			OPERA, Version(10, 0),
+		},
+		test{
+			"Mozilla/5.0 (Linux; U; Android 4.0.4; en-us; sdk Build/MR1) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+			PHONE,
+			ANDROID, Version(4, 0),
+			ANDROIDBROWSER, Version(4, 0),
+		},
+		test{
+			"Mozilla/5.0 (Linux; U; Android 4.0.3; en-us; mmi_apps_sdk Build/6.7.1_22) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+			PHONE,
+			ANDROID, Version(4, 0),
+			ANDROIDBROWSER, Version(4, 0),
+		},
+		test{
+			"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.82 Safari/537.36 OPR/29.0.1795.41 (Edition beta)",
+			PC,
+			MACOSX, Version(10, 10),
+			OPERA, Version(29, 0),
+		},
+		test{
+			"Mozilla/5.0 (Linux; U; Android 4.1.2; en-us; SM-T210R Build/JZO54K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Safari/534.30 UCBrowser/2.3.2.300",
+			TABLET,
+			ANDROID, Version(4, 1),
+			UCBROWSER, Version(2, 3),
+		},
+		test{
+			"Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+",
+			UNKNOWN,
+			RIMOS, Version(0, 0),
+			BLACKBERRY, Version(9900, 0),
 		},
 	}
 )

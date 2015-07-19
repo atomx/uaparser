@@ -6,27 +6,39 @@ import (
 
 // Browser id's.
 const (
-	IE        = iota + 2 // 2
-	CHROME               // 3
-	SAFARI               // 4
-	FIREFOX              // 5
-	OPERA                // 6
-	CHROMIUM             // 7
-	UCBROWSER            // 8
+	IE             = iota + 2 // 2
+	CHROME                    // 3
+	SAFARI                    // 4
+	FIREFOX                   // 5
+	OPERA                     // 6
+	CHROMIUM                  // 7
+	UCBROWSER                 // 8
+	ANDROIDBROWSER            // 9
+	BLACKBERRY                // 10
 )
 
 var Browsers = map[uint]string{
-	UNKNOWN:   "Unknown",
-	IE:        "IE",
-	CHROME:    "Chrome",
-	SAFARI:    "Safari",
-	FIREFOX:   "Firefox",
-	OPERA:     "Opera",
-	CHROMIUM:  "Chromium",
-	UCBROWSER: "UC Browser",
+	UNKNOWN:        "Unknown",
+	IE:             "IE",
+	CHROME:         "Chrome",
+	SAFARI:         "Safari",
+	FIREFOX:        "Firefox",
+	OPERA:          "Opera",
+	CHROMIUM:       "Chromium",
+	UCBROWSER:      "UC Browser",
+	ANDROIDBROWSER: "Android",
+	BLACKBERRY:     "BlackBerry",
 }
 
 var browsers = []pattern{
+
+	// BlackBerry
+	pattern{
+		BLACKBERRY,
+		[]string{"blackberry"},
+		[]string{},
+		regexp.MustCompile(`blackberry (\d+)`),
+	},
 
 	// IE < 11
 	pattern{
@@ -58,7 +70,13 @@ var browsers = []pattern{
 	pattern{
 		CHROME,
 		[]string{"chrome"},
-		[]string{"chromium", "chromeframe", "edge", "vivaldi"}, // Edge is from IE12 preview.
+		[]string{
+			"chromium",
+			"chromeframe",
+			"edge", // IE12 preview.
+			"vivaldi",
+			" opr/",
+		},
 		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
 	},
 	// Chrome on iOS
@@ -80,7 +98,15 @@ var browsers = []pattern{
 			"opios", // Opera on iOS using Opera Turbo.
 			"ucbrowser",
 			"qqbrowser",
+			"android",
 		},
+		regexp.MustCompile(`version/(\d+)\.(\d+)`),
+	},
+
+	pattern{
+		ANDROIDBROWSER,
+		[]string{"android", "mobile safari"},
+		[]string{"qqbrowser"},
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 
@@ -103,13 +129,19 @@ var browsers = []pattern{
 		OPERA,
 		[]string{"opera"},
 		[]string{},
-		regexp.MustCompile(`opera/(\d+)\.(\d+)`),
+		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 	pattern{ // Turbo on iOS
 		OPERA,
 		[]string{"opios"},
 		[]string{},
 		regexp.MustCompile(`opios/(\d+)\.(\d+)`),
+	},
+	pattern{ // Opera Next
+		OPERA,
+		[]string{" opr/"},
+		[]string{},
+		regexp.MustCompile(` opr/(\d+)\.(\d+)`),
 	},
 
 	// Chromium

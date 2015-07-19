@@ -13,6 +13,7 @@ const (
 	ANDROID                 // 6
 	WINDOWSPHONE            // 7
 	CHROMEOS                // 8
+	RIMOS                   // 9
 )
 
 var OperatingSystems = map[uint]string{
@@ -23,9 +24,18 @@ var OperatingSystems = map[uint]string{
 	ANDROID:      "Android",
 	WINDOWSPHONE: "Windows Phone",
 	CHROMEOS:     "Chrome OS",
+	RIMOS:        "RIM OS",
 }
 
 var operatingSystems = []pattern{
+
+	// RIM OS
+	pattern{
+		RIMOS,
+		[]string{"blackberry"},
+		[]string{},
+		nil,
+	},
 
 	// Windows
 	pattern{

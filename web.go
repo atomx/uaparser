@@ -75,8 +75,6 @@ func index(w http.ResponseWriter, r *http.Request) {
 		d.UserAgent = r.FormValue("useragent")
 	}
 
-	log.Printf("%22s %s\n", r.RemoteAddr, d.UserAgent)
-
 	d.DeviceType = DeviceTypes[DeviceType(d.UserAgent)]
 
 	operatingSystemId, operatingSystemVersion := OperatingSystem(d.UserAgent)
@@ -86,6 +84,8 @@ func index(w http.ResponseWriter, r *http.Request) {
 	browserId, browserVersion := Browser(d.UserAgent)
 	d.Browser = Browsers[browserId]
 	d.BrowserVersion = versionStr(browserVersion)
+
+	log.Printf("%22s | %10s | %14s %6s | %14s %6s | %s\n", r.RemoteAddr, d.DeviceType, d.OperatingSystem, d.OperatingSystemVersion, d.Browser, d.BrowserVersion, d.UserAgent)
 
 	w.Header().Set("Content-Type", "text/html")
 
