@@ -18,7 +18,7 @@ const (
 var OperatingSystems = map[uint]string{
 	WINDOWS:      "Windows",
 	IOS:          "iOS",
-	MACOSX:       "Max OS X",
+	MACOSX:       "Mac OS X",
 	LINUX:        "Linux",
 	ANDROID:      "Android",
 	WINDOWSPHONE: "Windows Phone",
