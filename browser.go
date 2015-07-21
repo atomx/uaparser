@@ -26,8 +26,8 @@ var Browsers = map[uint]string{
 	OPERA:          "Opera",
 	CHROMIUM:       "Chromium",
 	UCBROWSER:      "UC Browser",
-	ANDROIDBROWSER: "Android",
-	BLACKBERRY:     "BlackBerry",
+	ANDROIDBROWSER: "Android Browser",
+	BLACKBERRY:     "BlackBerry Browser",
 }
 
 var browsers = []pattern{
