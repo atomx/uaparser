@@ -73,7 +73,7 @@ var operatingSystems = []pattern{
 	pattern{
 		ANDROID,
 		[]string{"android"},
-		[]string{},
+		[]string{"windows phone"}, // IE 12 on windows phone says it's android :(
 		regexp.MustCompile(`android (\d+)\.(\d+)`),
 	},
 

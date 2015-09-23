@@ -20,12 +20,12 @@ const (
 
 // Version converts a major,minor version pair into a single number using (major * 10000) + minor.
 func Version(major, minor int) int {
-	return (major * 10000) + minor
+	return (major * 1000000) + minor
 }
 
 func Unversion(version int) (int, int) {
-	minor := version % 10000
-	return (version - minor) / 10000, minor
+	minor := version % 1000000
+	return (version - minor) / 1000000, minor
 }
 
 func find(patterns []pattern, userAgent string) (id uint, version int) {

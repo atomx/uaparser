@@ -228,6 +228,19 @@ var (
 			RIMOS, Version(0, 0),
 			BLACKBERRY, Version(9900, 0),
 		},
+		test{
+			// Test a really high (but realistic) minor version number.
+			"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10136",
+			PC,
+			WINDOWS, Version(10, 0),
+			IE, Version(12, 10136),
+		},
+		test{
+			"Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; en) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10316",
+			PHONE,
+			WINDOWSPHONE, Version(10, 0),
+			IE, Version(12, 10316),
+		},
 	}
 )
 
