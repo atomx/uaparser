@@ -63,7 +63,7 @@ var deviceTypes = []pattern{
 	pattern{
 		PHONE,
 		[]string{"iphone"},
-		[]string{},
+		[]string{"ipad"}, // Firefox for iPad contains both.
 		nil,
 	},
 	pattern{

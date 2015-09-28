@@ -99,6 +99,7 @@ var browsers = []pattern{
 			"ucbrowser",
 			"qqbrowser",
 			"android",
+			"fxios", // Firefox on iOS.
 		},
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
@@ -116,6 +117,12 @@ var browsers = []pattern{
 		[]string{"firefox"},
 		[]string{"seamonkey"},
 		regexp.MustCompile(`firefox/(\d+)\.(\d+)`),
+	},
+	pattern{ // On iPhone.
+		FIREFOX,
+		[]string{"fxios"},
+		[]string{},
+		regexp.MustCompile(`fxios/(\d+)\.(\d+)`),
 	},
 
 	// Opera
