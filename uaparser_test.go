@@ -224,7 +224,7 @@ var (
 		},
 		test{
 			"Mozilla/5.0 (BlackBerry; U; BlackBerry 9900; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.346 Mobile Safari/534.11+",
-			UNKNOWN,
+			PHONE,
 			RIMOS, Version(0, 0),
 			BLACKBERRY, Version(9900, 0),
 		},
@@ -240,6 +240,24 @@ var (
 			PHONE,
 			WINDOWSPHONE, Version(10, 0),
 			IE, Version(12, 10316),
+		},
+		test{
+			"Opera/9.80 (BlackBerry; Opera Mini/8.0.35667/37.6897; U; en) Presto/2.12.423 Version/12.16",
+			PHONE,
+			RIMOS, Version(0, 0),
+			OPERA, Version(9, 80),
+		},
+		test{
+			"Opera/9.80 (Series 60; Opera Mini/7.1.32453/37.6897; U; en) Presto/2.12.423 Version/12.16",
+			PHONE,
+			UNKNOWN, Version(0, 0),
+			OPERA, Version(9, 80),
+		},
+		test{
+			"Raptr RaptrDesktopApp/4.5.0 RaptrBuild-AMD RaptrControlCenter",
+			UNKNOWN,
+			UNKNOWN, Version(0, 0),
+			UNKNOWN, Version(0, 0),
 		},
 	}
 )

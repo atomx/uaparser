@@ -36,7 +36,7 @@ var browsers = []pattern{
 	pattern{
 		BLACKBERRY,
 		[]string{"blackberry"},
-		[]string{},
+		[]string{"opera mini"},
 		regexp.MustCompile(`blackberry (\d+)`),
 	},
 
@@ -130,7 +130,7 @@ var browsers = []pattern{
 		OPERA,
 		[]string{"opera mini"},
 		[]string{},
-		regexp.MustCompile(`opera mini/(\d+)\.(\d+)`),
+		regexp.MustCompile(`opera/(\d+)\.(\d+)`),
 	},
 	pattern{
 		OPERA,

@@ -84,6 +84,12 @@ var deviceTypes = []pattern{
 		[]string{},
 		nil,
 	},
+	pattern{
+		PHONE,
+		[]string{"blackberry"},
+		[]string{"playbook"},
+		nil,
+	},
 
 	// Tablet
 	pattern{
@@ -110,6 +116,12 @@ var deviceTypes = []pattern{
 		[]string{},
 		nil,
 	},
+	pattern{
+		TABLET,
+		[]string{"blackberry", "playbook"},
+		[]string{},
+		nil,
+	},
 
 	// Console
 	pattern{
@@ -127,6 +139,14 @@ var deviceTypes = []pattern{
 	pattern{
 		CONSOLE,
 		[]string{"nintendo"},
+		[]string{},
+		nil,
+	},
+
+	// When we don't know anything else we just mark all Opera Mini devices as phones.
+	pattern{
+		PHONE,
+		[]string{"opera mini"},
 		[]string{},
 		nil,
 	},
