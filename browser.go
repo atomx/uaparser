@@ -173,6 +173,6 @@ var browsers = []pattern{
 
 // Browser will return the browser id and version number.
 // Returns 1,0 when nothing matched.
-func Browser(userAgent string) (uint, int) {
+func Browser(userAgent string) (uint, int, int) {
 	return find(browsers, userAgent)
 }

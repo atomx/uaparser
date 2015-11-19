@@ -18,17 +18,7 @@ const (
 	UNKNOWN = 1
 )
 
-// Version converts a major,minor version pair into a single number using (major * 10000) + minor.
-func Version(major, minor int) int {
-	return (major * 1000000) + minor
-}
-
-func Unversion(version int) (int, int) {
-	minor := version % 1000000
-	return (version - minor) / 1000000, minor
-}
-
-func find(patterns []pattern, userAgent string) (id uint, version int) {
+func find(patterns []pattern, userAgent string) (id uint, major int, minor int) {
 	userAgent = strings.ToLower(userAgent)
 
 patterns:
@@ -54,8 +44,6 @@ patterns:
 		}
 
 		vs := pattern.version.FindStringSubmatch(userAgent)
-		major := 0
-		minor := 0
 
 		if len(vs) > 1 {
 			if v, err := strconv.ParseInt(vs[1], 10, 32); err == nil {
@@ -67,8 +55,6 @@ patterns:
 				minor = int(v)
 			}
 		}
-
-		version = Version(major, minor)
 
 		return
 	}

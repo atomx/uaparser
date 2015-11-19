@@ -155,6 +155,6 @@ var deviceTypes = []pattern{
 // DeviceType will return the device type.
 // Returns 1 when nothing matched.
 func DeviceType(userAgent string) uint {
-	id, _ := find(deviceTypes, userAgent)
+	id, _, _ := find(deviceTypes, userAgent)
 	return id
 }
