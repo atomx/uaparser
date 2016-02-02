@@ -15,6 +15,8 @@ const (
 	UCBROWSER                 // 8
 	ANDROIDBROWSER            // 9
 	BLACKBERRY                // 10
+	FACEBOOK                  // 11
+	TWITTER                   // 12
 )
 
 var Browsers = map[uint]string{
@@ -28,9 +30,24 @@ var Browsers = map[uint]string{
 	UCBROWSER:      "UC Browser",
 	ANDROIDBROWSER: "Android Browser",
 	BLACKBERRY:     "BlackBerry Browser",
+	FACEBOOK:       "Facebook Browser",
+	TWITTER:        "Twitter Browser",
 }
 
 var browsers = []pattern{
+
+	pattern{
+		TWITTER,
+		[]string{"twitter for iphone"},
+		[]string{},
+		nil,
+	},
+	pattern{
+		TWITTER,
+		[]string{"twitterandroid"},
+		[]string{},
+		nil,
+	},
 
 	// BlackBerry
 	pattern{
@@ -76,6 +93,7 @@ var browsers = []pattern{
 			"edge", // IE12 preview.
 			"vivaldi",
 			" opr/",
+			"fbav/",
 		},
 		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
 	},
@@ -107,7 +125,7 @@ var browsers = []pattern{
 	pattern{
 		ANDROIDBROWSER,
 		[]string{"android", "mobile safari"},
-		[]string{"qqbrowser"},
+		[]string{"qqbrowser", "fbav/"},
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 
@@ -168,6 +186,13 @@ var browsers = []pattern{
 		[]string{"ucbrowser"},
 		[]string{},
 		regexp.MustCompile(`ucbrowser/(\d+)\.(\d+)`),
+	},
+
+	pattern{
+		FACEBOOK,
+		[]string{"fbav/"},
+		[]string{},
+		regexp.MustCompile(`fbav/(\d+)\.(\d+)`),
 	},
 }
 

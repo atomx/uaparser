@@ -261,6 +261,24 @@ var (
 			UNKNOWN, 0, 0,
 			UNKNOWN, 0, 0,
 		},
+		test{
+			"Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]",
+			PHONE,
+			ANDROID, 5, 0,
+			FACEBOOK, 35, 0,
+		},
+		test{
+			"Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 Twitter for iPhone",
+			PHONE,
+			IOS, 5, 1,
+			TWITTER, 0, 0,
+		},
+		test{
+			"Mozilla/5.0 (Linux; Android 5.1.1; Nexus 10 Build/LMY48T; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/46.0.2490.76 Safari/537.36 TwitterAndroid",
+			TABLET,
+			ANDROID, 5, 1,
+			TWITTER, 0, 0,
+		},
 	}
 )
 
