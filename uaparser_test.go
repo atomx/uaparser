@@ -268,6 +268,18 @@ var (
 			FACEBOOK, 35, 0,
 		},
 		test{
+			"Mozilla/5.0 (iPad; CPU OS 9_2_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13D15 [FBAN/FBIOS;FBAV/51.0.0.52.154;FBBV/25351091;FBDV/iPad2,4;FBMD/iPad;FBSN/iPhone OS;FBSV/9.2.1;FBSS/1; FBCR/;FBID/tablet;FBLC/en_US;FBOP/1]",
+			TABLET,
+			IOS, 9, 2,
+			FACEBOOK, 51, 0,
+		},
+		test{
+			"Mozilla/5.0 (iPad; CPU OS 8_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12F69 [FBAN/FBIOS;FBAV/51.0.0.52.154;FBBV/25351091;FBDV/iPad2,5;FBMD/iPad;FBSN/iPhone OS;FBSV/8.3;FBSS/1; FBCR/;FBID/tablet;FBLC/en_US;FBOP/1]",
+			TABLET,
+			IOS, 8, 3,
+			FACEBOOK, 51, 0,
+		},
+		test{
 			"Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B206 Twitter for iPhone",
 			PHONE,
 			IOS, 5, 1,
