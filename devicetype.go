@@ -80,12 +80,6 @@ var deviceTypes = []pattern{
 	},
 	pattern{
 		PHONE,
-		[]string{"bb"},
-		[]string{},
-		nil,
-	},
-	pattern{
-		PHONE,
 		[]string{"blackberry"},
 		[]string{"playbook"},
 		nil,
