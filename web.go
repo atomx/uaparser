@@ -9,18 +9,19 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-	"strconv"
 
 	. "."
 )
 
 type data struct {
-	UserAgent              string
-	DeviceType             string
-	OperatingSystem        string
-	OperatingSystemVersion string
-	Browser                string
-	BrowserVersion         string
+	UserAgent                   string
+	DeviceType                  string
+	OperatingSystem             string
+	OperatingSystemVersionMajor int
+	OperatingSystemVersionMinor int
+	Browser                     string
+	BrowserVersionMajor         int
+	BrowserVersionMinor         int
 }
 
 var content = template.Must(template.New("content").Parse(`<!doctype html>
@@ -50,21 +51,15 @@ DeviceType: {{.DeviceType}}
 {{end}}
 {{if .OperatingSystem}}
 <p>
-OperatingSystem: {{.OperatingSystem}} {{.OperatingSystemVersion}}
+OperatingSystem: {{.OperatingSystem}} {{.OperatingSystemVersionMajor}}.{{.OperatingSystemVersionMinor}}
 </p>
 {{end}}
 {{if .Browser}}
 <p>
-Browser: {{.Browser}} {{.BrowserVersion}}
+Browser: {{.Browser}} {{.BrowserVersionMajor}}.{{.BrowserVersionMinor}}
 </p>
 {{end}}
 `))
-
-func versionStr(version int) string {
-	major, minor := Unversion(version)
-
-	return strconv.FormatInt(int64(major), 10) + "." + strconv.FormatInt(int64(minor), 10)
-}
 
 func index(w http.ResponseWriter, r *http.Request) {
 	d := data{
@@ -77,15 +72,17 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 	d.DeviceType = DeviceTypes[DeviceType(d.UserAgent)]
 
-	operatingSystemId, operatingSystemVersion := OperatingSystem(d.UserAgent)
+	operatingSystemId, operatingSystemVersionMajor, operatingSystemVersionMinor := OperatingSystem(d.UserAgent)
 	d.OperatingSystem = OperatingSystems[operatingSystemId]
-	d.OperatingSystemVersion = versionStr(operatingSystemVersion)
+	d.OperatingSystemVersionMajor = operatingSystemVersionMajor
+	d.OperatingSystemVersionMinor = operatingSystemVersionMinor
 
-	browserId, browserVersion := Browser(d.UserAgent)
+	browserId, browserVersionMajor, browserVersionMinor := Browser(d.UserAgent)
 	d.Browser = Browsers[browserId]
-	d.BrowserVersion = versionStr(browserVersion)
+	d.BrowserVersionMajor = browserVersionMajor
+	d.BrowserVersionMinor = browserVersionMinor
 
-	log.Printf("%22s | %10s | %14s %6s | %14s %6s | %s\n", r.RemoteAddr, d.DeviceType, d.OperatingSystem, d.OperatingSystemVersion, d.Browser, d.BrowserVersion, d.UserAgent)
+	log.Printf("%22s | %10s | %14s %6d | %14s %6d | %s\n", r.RemoteAddr, d.DeviceType, d.OperatingSystem, d.OperatingSystemVersionMajor, d.Browser, d.BrowserVersionMajor, d.UserAgent)
 
 	w.Header().Set("Content-Type", "text/html")
 
