@@ -9,7 +9,7 @@ const (
 	SETTOPBOX            // 6
 )
 
-var DeviceTypes = map[uint]string{
+var DeviceTypes = map[int64]string{
 	UNKNOWN:   "Unknown",
 	PC:        "PC",
 	PHONE:     "Phone",
@@ -148,7 +148,7 @@ var deviceTypes = []pattern{
 
 // DeviceType will return the device type.
 // Returns 1 when nothing matched.
-func DeviceType(userAgent string) uint {
+func DeviceType(userAgent string) int64 {
 	id, _, _ := find(deviceTypes, userAgent)
 	return id
 }

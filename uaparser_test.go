@@ -7,13 +7,13 @@ import (
 type test struct {
 	userAgent string
 
-	deviceTypeId uint
+	deviceTypeId int64
 
-	operatingSystemId           uint
+	operatingSystemId           int64
 	operatingSystemVersionMajor int
 	operatingSystemVersionMinor int
 
-	browserId           uint
+	browserId           int64
 	browserVersionMajor int
 	browserVersionMinor int
 }

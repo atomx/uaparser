@@ -7,7 +7,7 @@ import (
 )
 
 type pattern struct {
-	id             uint
+	id             int64
 	mustContain    []string
 	mustNotContain []string
 	version        *regexp.Regexp
@@ -18,7 +18,7 @@ const (
 	UNKNOWN = 1
 )
 
-func find(patterns []pattern, userAgent string) (id uint, major int, minor int) {
+func find(patterns []pattern, userAgent string) (id int64, major int, minor int) {
 	userAgent = strings.ToLower(userAgent)
 
 patterns:

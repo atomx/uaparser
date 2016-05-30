@@ -16,7 +16,7 @@ const (
 	RIMOS                   // 9
 )
 
-var OperatingSystems = map[uint]string{
+var OperatingSystems = map[int64]string{
 	WINDOWS:      "Windows",
 	IOS:          "iOS",
 	MACOSX:       "Mac OS X",
@@ -96,6 +96,6 @@ var operatingSystems = []pattern{
 
 // OperatingSystem will return the operating system id and version number.
 // Returns 1,0 when nothing matched.
-func OperatingSystem(userAgent string) (uint, int, int) {
+func OperatingSystem(userAgent string) (int64, int, int) {
 	return find(operatingSystems, userAgent)
 }
