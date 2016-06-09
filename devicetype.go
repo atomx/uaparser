@@ -20,13 +20,13 @@ var DeviceTypes = map[int64]string{
 
 var deviceTypes = []pattern{
 	// Set-top box
-	pattern{
+	{
 		SETTOPBOX,
 		[]string{"media center pc"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		SETTOPBOX,
 		[]string{"googletv"},
 		[]string{},
@@ -34,25 +34,25 @@ var deviceTypes = []pattern{
 	},
 
 	// PC
-	pattern{
+	{
 		PC,
 		[]string{"windows"},
 		[]string{"windows phone"},
 		nil,
 	},
-	pattern{
+	{
 		PC,
 		[]string{"mac os x"},
 		[]string{"iphone", "ipad", "ipod"},
 		nil,
 	},
-	pattern{
+	{
 		PC,
 		[]string{"linux"},
 		[]string{"android"},
 		nil,
 	},
-	pattern{
+	{
 		PC,
 		[]string{"cros"},
 		[]string{},
@@ -60,25 +60,25 @@ var deviceTypes = []pattern{
 	},
 
 	// Phone
-	pattern{
+	{
 		PHONE,
 		[]string{"iphone"},
 		[]string{"ipad"}, // Firefox for iPad contains both.
 		nil,
 	},
-	pattern{
+	{
 		PHONE,
 		[]string{"windows phone"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		PHONE,
 		[]string{"android", "mobile"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		PHONE,
 		[]string{"blackberry"},
 		[]string{"playbook"},
@@ -86,31 +86,31 @@ var deviceTypes = []pattern{
 	},
 
 	// Tablet
-	pattern{
+	{
 		TABLET,
 		[]string{"ipad"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		TABLET,
 		[]string{"android"},
 		[]string{"mobile", "cros"},
 		nil,
 	},
-	pattern{
+	{
 		TABLET,
 		[]string{"rim Tablet"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		TABLET,
 		[]string{"tablet pc"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		TABLET,
 		[]string{"blackberry", "playbook"},
 		[]string{},
@@ -118,19 +118,19 @@ var deviceTypes = []pattern{
 	},
 
 	// Console
-	pattern{
+	{
 		CONSOLE,
 		[]string{"playstation"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		CONSOLE,
 		[]string{"xbox"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		CONSOLE,
 		[]string{"nintendo"},
 		[]string{},
@@ -138,7 +138,7 @@ var deviceTypes = []pattern{
 	},
 
 	// When we don't know anything else we just mark all Opera Mini devices as phones.
-	pattern{
+	{
 		PHONE,
 		[]string{"opera mini"},
 		[]string{},

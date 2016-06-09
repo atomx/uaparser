@@ -36,13 +36,13 @@ var Browsers = map[int64]string{
 
 var browsers = []pattern{
 
-	pattern{
+	{
 		TWITTER,
 		[]string{"twitter for iphone"},
 		[]string{},
 		nil,
 	},
-	pattern{
+	{
 		TWITTER,
 		[]string{"twitterandroid"},
 		[]string{},
@@ -50,7 +50,7 @@ var browsers = []pattern{
 	},
 
 	// BlackBerry
-	pattern{
+	{
 		BLACKBERRY,
 		[]string{"blackberry"},
 		[]string{"opera mini"},
@@ -58,7 +58,7 @@ var browsers = []pattern{
 	},
 
 	// IE < 11
-	pattern{
+	{
 		IE,
 		[]string{"msie"},
 		[]string{"chromeframe"},
@@ -66,7 +66,7 @@ var browsers = []pattern{
 	},
 
 	// IE 11
-	pattern{
+	{
 		IE,
 		[]string{"trident"},
 		[]string{"chromeframe"},
@@ -76,7 +76,7 @@ var browsers = []pattern{
 	// IE 12 (edge)
 	// Looks like:
 	// Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0
-	pattern{
+	{
 		IE,
 		[]string{"applewebkit", "chrome", "safari", "edge"},
 		[]string{},
@@ -84,7 +84,7 @@ var browsers = []pattern{
 	},
 
 	// Chrome
-	pattern{
+	{
 		CHROME,
 		[]string{"chrome"},
 		[]string{
@@ -98,7 +98,7 @@ var browsers = []pattern{
 		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
 	},
 	// Chrome on iOS
-	pattern{
+	{
 		CHROME,
 		[]string{"crios"},
 		[]string{},
@@ -106,7 +106,7 @@ var browsers = []pattern{
 	},
 
 	// Safari
-	pattern{
+	{
 		SAFARI,
 		[]string{"safari"},
 		[]string{
@@ -122,7 +122,7 @@ var browsers = []pattern{
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
 
-	pattern{
+	{
 		ANDROIDBROWSER,
 		[]string{"android", "mobile safari"},
 		[]string{"qqbrowser", "fbav/"},
@@ -130,13 +130,13 @@ var browsers = []pattern{
 	},
 
 	// Firefox
-	pattern{
+	{
 		FIREFOX,
 		[]string{"firefox"},
 		[]string{"seamonkey"},
 		regexp.MustCompile(`firefox/(\d+)\.(\d+)`),
 	},
-	pattern{ // On iPhone.
+	{ // On iPhone.
 		FIREFOX,
 		[]string{"fxios"},
 		[]string{},
@@ -144,25 +144,25 @@ var browsers = []pattern{
 	},
 
 	// Opera
-	pattern{ // Mini
+	{ // Mini
 		OPERA,
 		[]string{"opera mini"},
 		[]string{},
 		regexp.MustCompile(`opera/(\d+)\.(\d+)`),
 	},
-	pattern{
+	{
 		OPERA,
 		[]string{"opera"},
 		[]string{},
 		regexp.MustCompile(`version/(\d+)\.(\d+)`),
 	},
-	pattern{ // Turbo on iOS
+	{ // Turbo on iOS
 		OPERA,
 		[]string{"opios"},
 		[]string{},
 		regexp.MustCompile(`opios/(\d+)\.(\d+)`),
 	},
-	pattern{ // Opera Next
+	{ // Opera Next
 		OPERA,
 		[]string{" opr/"},
 		[]string{},
@@ -170,7 +170,7 @@ var browsers = []pattern{
 	},
 
 	// Chromium
-	pattern{
+	{
 		CHROMIUM,
 		[]string{"chromium"},
 		[]string{},
@@ -181,14 +181,14 @@ var browsers = []pattern{
 	// See: https://play.google.com/store/apps/details?id=com.UCMobile.intl&hl=en
 	// According to http://gs.statcounter.com/#mobile_browser-ww-monthly-201402-201502-bar it's the 5th biggest browser
 	// with about the same number of users as Opera.
-	pattern{
+	{
 		UCBROWSER,
 		[]string{"ucbrowser"},
 		[]string{},
 		regexp.MustCompile(`ucbrowser/(\d+)\.(\d+)`),
 	},
 
-	pattern{
+	{
 		FACEBOOK,
 		[]string{"fbav/"},
 		[]string{},

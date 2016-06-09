@@ -30,7 +30,7 @@ var OperatingSystems = map[int64]string{
 var operatingSystems = []pattern{
 
 	// RIM OS
-	pattern{
+	{
 		RIMOS,
 		[]string{"blackberry"},
 		[]string{},
@@ -38,7 +38,7 @@ var operatingSystems = []pattern{
 	},
 
 	// Windows
-	pattern{
+	{
 		WINDOWS,
 		[]string{"windows"},
 		[]string{"windows phone"},
@@ -46,7 +46,7 @@ var operatingSystems = []pattern{
 	},
 
 	// iOS
-	pattern{
+	{
 		IOS,
 		[]string{"like mac os x"},
 		[]string{},
@@ -54,7 +54,7 @@ var operatingSystems = []pattern{
 	},
 
 	// Mac OS X
-	pattern{
+	{
 		MACOSX,
 		[]string{"mac os x"},
 		[]string{"iphone", "ipad", "ipod"},
@@ -62,7 +62,7 @@ var operatingSystems = []pattern{
 	},
 
 	// Linux
-	pattern{
+	{
 		LINUX,
 		[]string{"linux"},
 		[]string{"android"},
@@ -70,7 +70,7 @@ var operatingSystems = []pattern{
 	},
 
 	// Android
-	pattern{
+	{
 		ANDROID,
 		[]string{"android"},
 		[]string{"windows phone"}, // IE 12 on windows phone says it's android :(
@@ -78,7 +78,7 @@ var operatingSystems = []pattern{
 	},
 
 	// Windows Phone
-	pattern{
+	{
 		WINDOWSPHONE,
 		[]string{"windows phone"},
 		[]string{},
@@ -86,7 +86,7 @@ var operatingSystems = []pattern{
 	},
 
 	// Chrome OS
-	pattern{
+	{
 		CHROMEOS,
 		[]string{"cros"},
 		[]string{},
