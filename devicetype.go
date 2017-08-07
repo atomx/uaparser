@@ -33,6 +33,34 @@ var deviceTypes = []pattern{
 		nil,
 	},
 
+	// Console
+	{
+		CONSOLE,
+		[]string{"playstation"},
+		[]string{},
+		nil,
+	},
+	{
+		CONSOLE,
+		[]string{"xbox"},
+		[]string{},
+		nil,
+	},
+	{
+		CONSOLE,
+		[]string{"nintendo"},
+		[]string{},
+		nil,
+	},
+
+	// When we don't know anything else we just mark all Opera Mini devices as phones.
+	{
+		PHONE,
+		[]string{"opera mini"},
+		[]string{},
+		nil,
+	},
+
 	// PC
 	{
 		PC,
@@ -113,34 +141,6 @@ var deviceTypes = []pattern{
 	{
 		TABLET,
 		[]string{"blackberry", "playbook"},
-		[]string{},
-		nil,
-	},
-
-	// Console
-	{
-		CONSOLE,
-		[]string{"playstation"},
-		[]string{},
-		nil,
-	},
-	{
-		CONSOLE,
-		[]string{"xbox"},
-		[]string{},
-		nil,
-	},
-	{
-		CONSOLE,
-		[]string{"nintendo"},
-		[]string{},
-		nil,
-	},
-
-	// When we don't know anything else we just mark all Opera Mini devices as phones.
-	{
-		PHONE,
-		[]string{"opera mini"},
 		[]string{},
 		nil,
 	},
