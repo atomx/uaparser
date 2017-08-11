@@ -17,6 +17,8 @@ const (
 	BLACKBERRY                // 10
 	FACEBOOK                  // 11
 	TWITTER                   // 12
+	EDGE                      // 13
+	QQBROWSER                 // 14
 )
 
 var Browsers = map[int64]string{
@@ -32,6 +34,8 @@ var Browsers = map[int64]string{
 	BLACKBERRY:     "BlackBerry Browser",
 	FACEBOOK:       "Facebook Browser",
 	TWITTER:        "Twitter Browser",
+	EDGE:           "Edge",
+	QQBROWSER:      "QQ Browser",
 }
 
 var browsers = []pattern{
@@ -54,7 +58,15 @@ var browsers = []pattern{
 		BLACKBERRY,
 		[]string{"blackberry"},
 		[]string{"opera mini"},
-		regexp.MustCompile(`blackberry (\d+)`),
+		regexp.MustCompile(` blackberry (\d+)`),
+	},
+
+	// Edge
+	{
+		EDGE,
+		[]string{" edge/"},
+		[]string{},
+		regexp.MustCompile(` edge/(\d+)\.(\d+)`),
 	},
 
 	// IE < 11
@@ -62,7 +74,7 @@ var browsers = []pattern{
 		IE,
 		[]string{"msie"},
 		[]string{"chromeframe"},
-		regexp.MustCompile(`msie (\d+)\.(\d+)`),
+		regexp.MustCompile(` msie (\d+)\.(\d+)`),
 	},
 
 	// IE 11
@@ -70,7 +82,7 @@ var browsers = []pattern{
 		IE,
 		[]string{"trident"},
 		[]string{"chromeframe"},
-		regexp.MustCompile(`rv:(\d+)\.(\d+)`),
+		regexp.MustCompile(` rv:(\d+)\.(\d+)`),
 	},
 
 	// IE 12 (edge)
@@ -80,13 +92,13 @@ var browsers = []pattern{
 		IE,
 		[]string{"applewebkit", "chrome", "safari", "edge"},
 		[]string{},
-		regexp.MustCompile(`edge/(\d+)\.(\d+)`),
+		regexp.MustCompile(` edge/(\d+)\.(\d+)`),
 	},
 
 	// Chrome
 	{
 		CHROME,
-		[]string{"chrome"},
+		[]string{" chrome/"},
 		[]string{
 			"chromium",
 			"chromeframe",
@@ -95,14 +107,14 @@ var browsers = []pattern{
 			" opr/",
 			"fbav/",
 		},
-		regexp.MustCompile(`chrome/(\d+)\.(\d+)`),
+		regexp.MustCompile(` chrome/(\d+)\.(\d+)`),
 	},
 	// Chrome on iOS
 	{
 		CHROME,
-		[]string{"crios"},
+		[]string{" crios/"},
 		[]string{},
-		regexp.MustCompile(`crios/(\d+)\.(\d+)`),
+		regexp.MustCompile(` crios/(\d+)\.(\d+)`),
 	},
 
 	// Safari
@@ -119,14 +131,49 @@ var browsers = []pattern{
 			"android",
 			"fxios", // Firefox on iOS.
 		},
-		regexp.MustCompile(`version/(\d+)\.(\d+)`),
+		regexp.MustCompile(` version/(\d+)\.(\d+)`),
+	},
+	{
+		SAFARI,
+		[]string{"ipad", "applewebkit", "mobile"},
+		[]string{
+			"chrome",
+			"chromium",
+			"crios",
+			"opios", // Opera on iOS using Opera Turbo.
+			"ucbrowser",
+			"qqbrowser",
+			"android",
+			"fxios", // Firefox on iOS.
+			"fbav/",
+			" qq/",
+		},
+		nil,
+	},
+	{
+		SAFARI,
+		[]string{"iphone", "applewebkit", "mobile"},
+		[]string{
+			"chrome",
+			"chromium",
+			"crios",
+			"opios", // Opera on iOS using Opera Turbo.
+			"ucbrowser",
+			"qqbrowser",
+			"android",
+			"fxios", // Firefox on iOS.
+			"fbav/",
+			" qq/",
+		},
+		nil,
 	},
 
+	// Android
 	{
 		ANDROIDBROWSER,
 		[]string{"android", "mobile safari"},
 		[]string{"qqbrowser", "fbav/"},
-		regexp.MustCompile(`version/(\d+)\.(\d+)`),
+		regexp.MustCompile(` version/(\d+)\.(\d+)`),
 	},
 
 	// Firefox
@@ -134,13 +181,13 @@ var browsers = []pattern{
 		FIREFOX,
 		[]string{"firefox"},
 		[]string{"seamonkey"},
-		regexp.MustCompile(`firefox/(\d+)\.(\d+)`),
+		regexp.MustCompile(` firefox/(\d+)\.(\d+)`),
 	},
 	{ // On iPhone.
 		FIREFOX,
 		[]string{"fxios"},
 		[]string{},
-		regexp.MustCompile(`fxios/(\d+)\.(\d+)`),
+		regexp.MustCompile(` fxios/(\d+)\.(\d+)`),
 	},
 
 	// Opera
@@ -154,13 +201,13 @@ var browsers = []pattern{
 		OPERA,
 		[]string{"opera"},
 		[]string{},
-		regexp.MustCompile(`version/(\d+)\.(\d+)`),
+		regexp.MustCompile(` version/(\d+)\.(\d+)`),
 	},
 	{ // Turbo on iOS
 		OPERA,
 		[]string{"opios"},
 		[]string{},
-		regexp.MustCompile(`opios/(\d+)\.(\d+)`),
+		regexp.MustCompile(` opios/(\d+)\.(\d+)`),
 	},
 	{ // Opera Next
 		OPERA,
@@ -174,7 +221,7 @@ var browsers = []pattern{
 		CHROMIUM,
 		[]string{"chromium"},
 		[]string{},
-		regexp.MustCompile(`chromium/(\d+)\.(\d+)`),
+		regexp.MustCompile(` chromium/(\d+)\.(\d+)`),
 	},
 
 	// UC Browser
@@ -185,7 +232,7 @@ var browsers = []pattern{
 		UCBROWSER,
 		[]string{"ucbrowser"},
 		[]string{},
-		regexp.MustCompile(`ucbrowser/(\d+)\.(\d+)`),
+		regexp.MustCompile(` ucbrowser/(\d+)\.(\d+)`),
 	},
 
 	{
@@ -193,6 +240,14 @@ var browsers = []pattern{
 		[]string{"fbav/"},
 		[]string{},
 		regexp.MustCompile(`fbav/(\d+)\.(\d+)`),
+	},
+
+	// QQ Browser
+	{
+		QQBROWSER,
+		[]string{" qq/"},
+		[]string{},
+		regexp.MustCompile(` qq/(\d+)\.(\d+)`),
 	},
 }
 

@@ -174,7 +174,7 @@ var (
 			"Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.143 Safari/537.36 Edge/12.0",
 			PC,
 			WINDOWS, 6, 4,
-			IE, 12, 0,
+			EDGE, 12, 0,
 		},
 		{
 			"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Vivaldi/1.0.83.38 Safari/537.36",
@@ -235,13 +235,13 @@ var (
 			"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10136",
 			PC,
 			WINDOWS, 10, 0,
-			IE, 12, 10136,
+			EDGE, 12, 10136,
 		},
 		{
 			"Mozilla/5.0 (Windows Phone 10.0; Android 4.2.1; en) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Mobile Safari/537.36 Edge/12.10316",
 			PHONE,
 			WINDOWSPHONE, 10, 0,
-			IE, 12, 10316,
+			EDGE, 12, 10316,
 		},
 		{
 			"Opera/9.80 (BlackBerry; Opera Mini/8.0.35667/37.6897; U; en) Presto/2.12.423 Version/12.16",
@@ -291,36 +291,48 @@ var (
 			ANDROID, 5, 1,
 			TWITTER, 0, 0,
 		},
+		{
+			"mozilla/5.0 (iphone; cpu iphone os 8_1_2 like mac os x) applewebkit/600.1.4 (khtml, like gecko) mobile/12b440 qq/5.3.0.319 nettype/wifi mem/205",
+			PHONE,
+			IOS, 8, 1,
+			QQBROWSER, 5, 3,
+		},
+		{
+			"Mozilla/5.0 (iPad; CPU OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Mobile/10A403",
+			TABLET,
+			IOS, 6, 0,
+			SAFARI, 0, 0,
+		},
 	}
 )
 
 func TestUserAgents(t *testing.T) {
 	for _, test := range tests {
-		deviceTypeId := DeviceType(test.userAgent)
-		operatingSystemId, operatingSystemVersionMajor, operatingSystemVersionMinor := OperatingSystem(test.userAgent)
-		browserId, browserVersionMajor, browserVersionMinor := Browser(test.userAgent)
+		t.Run(test.userAgent, func(t *testing.T) {
+			deviceTypeId := DeviceType(test.userAgent)
+			operatingSystemId, operatingSystemVersionMajor, operatingSystemVersionMinor := OperatingSystem(test.userAgent)
+			browserId, browserVersionMajor, browserVersionMinor := Browser(test.userAgent)
 
-		t.Log(test.userAgent)
+			if deviceTypeId != test.deviceTypeId {
+				t.Errorf(" - device type %s does not match expected %s", DeviceTypes[deviceTypeId], DeviceTypes[test.deviceTypeId])
+			}
 
-		if deviceTypeId != test.deviceTypeId {
-			t.Errorf(" - device type %s does not match expected %s", DeviceTypes[deviceTypeId], DeviceTypes[test.deviceTypeId])
-		}
+			if operatingSystemId != test.operatingSystemId {
+				t.Errorf(" - operating system id %s does not match expected %s", OperatingSystems[operatingSystemId], OperatingSystems[test.operatingSystemId])
+			}
+			if operatingSystemVersionMajor != test.operatingSystemVersionMajor ||
+				operatingSystemVersionMinor != test.operatingSystemVersionMinor {
+				t.Errorf(" - operating system version %d.%d does not match expected %d.%d", operatingSystemVersionMajor, operatingSystemVersionMinor, test.operatingSystemVersionMajor, test.operatingSystemVersionMinor)
+			}
 
-		if operatingSystemId != test.operatingSystemId {
-			t.Errorf(" - operating system id %s does not match expected %s", OperatingSystems[operatingSystemId], OperatingSystems[test.operatingSystemId])
-		}
-		if operatingSystemVersionMajor != test.operatingSystemVersionMajor ||
-			operatingSystemVersionMinor != test.operatingSystemVersionMinor {
-			t.Errorf(" - operating system version %d.%d does not match expected %d.%d", operatingSystemVersionMajor, operatingSystemVersionMinor, test.operatingSystemVersionMajor, test.operatingSystemVersionMinor)
-		}
-
-		if browserId != test.browserId {
-			t.Errorf(" - browser id %s does not match expected %s", Browsers[browserId], Browsers[test.browserId])
-		}
-		if browserVersionMajor != test.browserVersionMajor ||
-			browserVersionMinor != test.browserVersionMinor {
-			t.Errorf(" - browser version %d.%d does not match expected %d.%d", browserVersionMajor, browserVersionMinor, test.browserVersionMajor, test.browserVersionMinor)
-		}
+			if browserId != test.browserId {
+				t.Errorf(" - browser id %s does not match expected %s", Browsers[browserId], Browsers[test.browserId])
+			}
+			if browserVersionMajor != test.browserVersionMajor ||
+				browserVersionMinor != test.browserVersionMinor {
+				t.Errorf(" - browser version %d.%d does not match expected %d.%d", browserVersionMajor, browserVersionMinor, test.browserVersionMajor, test.browserVersionMinor)
+			}
+		})
 	}
 }
 
