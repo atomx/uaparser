@@ -130,6 +130,7 @@ var browsers = []pattern{
 			"qqbrowser",
 			"android",
 			"fxios", // Firefox on iOS.
+			"samsungbrowser",
 		},
 		regexp.MustCompile(` version/(\d+)\.(\d+)`),
 	},

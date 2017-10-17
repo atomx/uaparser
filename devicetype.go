@@ -32,6 +32,12 @@ var deviceTypes = []pattern{
 		[]string{},
 		nil,
 	},
+	{
+		SETTOPBOX,
+		[]string{"smart-tv"},
+		[]string{},
+		nil,
+	},
 
 	// Console
 	{
