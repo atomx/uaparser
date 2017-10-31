@@ -309,6 +309,12 @@ var (
 			LINUX, 0, 0,
 			UNKNOWN, 0, 0,
 		},
+		{
+			"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Valve Steam Client Safari/537.36",
+			PC,
+			WINDOWS, 10, 0,
+			UNKNOWN, 0, 0,
+		},
 	}
 )
 
